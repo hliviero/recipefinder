@@ -1,10 +1,10 @@
-<h1>Searching for - <%= @search_term.capitalize %></h1>
-
 <% if @recipes.blank? || @search_term.blank? %>
 
-<h1>No Recipes found!</h1>
+<h1>That's bad, No Recipes found!</h1>
 
 <% else %>
+
+<h1>Searching for - <%= @search_term.capitalize %></h1>
 
 <table border="1">
 	<tr>
