@@ -1,35 +1,24 @@
-<div class="container">
+<h1>Searching for - <%= @search_term.capitalize %></h1>
 
-<h1>Searching for <%= @search %></h1>
+<% if @recipes.blank? || @search_term.blank? %>
 
-<%= puts @recipes %>
-
-<div class="row">
-	<div class="col-md-12">
-<% if @recipes && @recipes.any? %>
-
-	<table class="table table-striped">
-		<thead>
-			<th></th>
-			<th>Title</th>
-			<th>Social Rank</th>
-		</thead>
-		<tbody>
-			<% @recipes.each do |recipe| %>
-				<tr>
-					<td><%= link_to(image_tag(recipe["image_url"], size: "100x100"), recipe["source_url"]) %></td>
-					<td><%= link_to sanitize(recipe["title"]), recipe["source_url"] %></td>
-					<td><%= recipe["social_rank"] %></td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
+<h1>No Recipes found!</h1>
 
 <% else %>
 
-	<p>No recipes found</p>
+<table border="1">
+	<tr>
+  	<th>Image</th>
+  	<th>Recipe</th>
+  	<th>Rating</th>
+  </tr>
+  <% @recipes.each do |recipe| %>
+    <tr class=<%= cycle('even', 'odd') %>>
+			<td><%= link_to(image_tag(recipe["image_url"], size: "100x100"), recipe["source_url"]) %></td>
+			<td><%= link_to sanitize(recipe["title"]), recipe["source_url"] %></td>
+			<td><%= recipe["social_rank"].to_i %></td>
+    </tr>
+	<% end %>
+</table>
 
 <% end %>
-</div>
-</div>
-</div>
