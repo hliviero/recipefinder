@@ -13,6 +13,11 @@ gem 'therubyracer', platforms: :ruby
 gem 'capybara', '~> 2.4.4'
 gem 'poltergeist', '~> 1.6.0'
 gem 'phantomjs', '~> 1.9.8.0'
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'httparty'
+
 
 # Access an IRB console on exception pages or by using <%= console %> in views
 gem 'web-console', '~> 2.0', group: :development
@@ -22,12 +27,8 @@ group :development, :test do
   gem 'byebug'
   gem 'spring'
 end
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'httparty'
 
 group :production do
-  gem 'pg'
-  gem 'rails_12factor'
+  gem 'pg',             '0.17.1'
+  gem 'rails_12factor', '0.0.2'
 end
