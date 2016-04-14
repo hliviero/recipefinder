@@ -1,10 +1,18 @@
+
+
 <% if @recipes.blank? || @search_term.blank? %>
 
 <h1>That's bad, No Recipes found!</h1>
 
 <% else %>
 
-<h1>Searching for - <%= @search_term.capitalize %></h1>
+<h1>
+	<%= form_tag("/recipes", method: "get") do %>
+  <%= label_tag(:search, "Search for:") %>
+  <%= text_field_tag(:search) %>
+  <%= submit_tag("Search") %>
+<% end %>
+</h1>
 
 <table border="1">
 	<tr>
